@@ -1,6 +1,5 @@
 #pragma once
 #include "BMEConstants.h"
-#include <Adafruit_BME280.h>
 #include <etl/singleton.h>
 #include <math.h>
 

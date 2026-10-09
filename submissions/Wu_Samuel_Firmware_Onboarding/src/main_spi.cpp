@@ -3,7 +3,7 @@
 #include "LEDController.h"
 
 // millis implementation; start at 0
-unsigned long previousMillis = millis();
+unsigned long previousMillis = 0;
 
 void setup() {
     // init communication at 115200 bits per second; monitor rate from platformio.ini
@@ -14,19 +14,18 @@ void setup() {
 
     BMESPIInterfaceInstance::create();
     if (!BMESPIInterfaceInstance::instance().begin()) {
-        while (true) {
-            Serial.println("main_spi.cpp | [ERROR] BME280 not found, check wiring");
-        }
+        Serial.println(F("main_spi.cpp | [ERROR] BME280 not found, check wiring"));
+        while (true) {}
     }
 
-    Serial.println("main_spi.cpp | [READY] LED and BME280 ready");
+    Serial.println(F("main_spi.cpp | [READY] LED and BME280 ready"));
 }
 
 void loop() {
     unsigned long currentMillis = millis();
 
     // if a second passes, run the code within
-    if (currentMillis - previousMillis > BMEConstants::BME280_INTERVAL) {
+    if (currentMillis - previousMillis >= BMEConstants::BME280_INTERVAL) {
         previousMillis = currentMillis;
 
         // get temp and set blink interval every second

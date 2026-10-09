@@ -15,7 +15,7 @@ class BMESPIInterface {
     
     private:
         BMESPIInterface() = default;
-        Adafruit_BME280 bme;
+        Adafruit_BME280 bme{BMEConstants::CS_PIN};
 };
 
 using BMESPIInterfaceInstance = etl::singleton<BMESPIInterface>;

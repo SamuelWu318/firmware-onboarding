@@ -11,4 +11,7 @@ namespace BMEConstants {
     // temp boundaries to prevent neg temp calculations
     constexpr float MIN_TEMP = 0.0f;
     constexpr float MAX_TEMP = 65.0f;
+
+    // pins and stuff (SPI 10 default)
+    constexpr uint8_t CS_PIN = 10;
 }

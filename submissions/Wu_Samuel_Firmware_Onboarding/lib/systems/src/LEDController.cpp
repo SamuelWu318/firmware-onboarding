@@ -18,7 +18,7 @@ void LEDController::setBlinkInterval(float temperature) {
     // convert to an interval between 0 and 1
     const float ratio = (tempConstrained - BMEConstants::MIN_TEMP) / (BMEConstants::MAX_TEMP - BMEConstants::MIN_TEMP);
     
-    currentBlinkInterval = float(BMEConstants::MIN_BLINK_TIME) + ratio * (float(BMEConstants::MAX_BLINK_TIME) - float(BMEConstants::MIN_BLINK_TIME));
+    currentBlinkInterval = float(BMEConstants::MAX_BLINK_TIME) - ratio * (float(BMEConstants::MAX_BLINK_TIME) - float(BMEConstants::MIN_BLINK_TIME));
 }
 
 unsigned long LEDController::getBlinkInterval() const {
